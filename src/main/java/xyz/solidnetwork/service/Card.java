@@ -8,9 +8,9 @@ public class Card {
 
     public Card() {
         number = "1111 2222 3333 4444";
-        expiration = "01/30";
+        expiration = "11/33";
         holder = "Mary Jane Doe";
-        cvv = "****";
+        cvv = "555";
     }
 
     public String getNumber() {

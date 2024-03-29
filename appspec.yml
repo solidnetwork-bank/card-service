@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/repo
+permissions:
+  - object: /var/repo
+    owner: root
+    group: root
+    type:
+      - directory
+      - file
+hooks:
+  ApplicationStart:
+    - location: scripts/reload-service.sh
+      timeout: 300
+      runas: root

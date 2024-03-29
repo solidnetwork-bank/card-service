@@ -42,9 +42,9 @@ jobs:
         run: |
           aws deploy push \
           --application-name ${{ secrets.AWS_CODE_DEPLOY_APP_NAME }} \
-          --description "This is a revision for deployment-$BUILD_NUMBER" \
+          --description "This is a revision for deployment-card-service" \
           --ignore-hidden-files \
-          --s3-location s3://${{ secrets.AWS_S3_BUCKET }}/deployment-$BUILD_NUMBER.zip \
+          --s3-location s3://${{ secrets.AWS_S3_BUCKET }}/deployment-card-service.zip \
           --source .
 
   # Deploy to EC2
@@ -65,8 +65,8 @@ jobs:
         run: |
           aws deploy create-deployment \
            --application-name ${{ secrets.AWS_CODE_DEPLOY_APP_NAME }} \
-           --description "This is a deployment for deployment-$BUILD_NUMBER" \
+           --description "This is a deployment for deployment-card-service" \
            --deployment-config-name CodeDeployDefault.OneAtATime \
            --deployment-group-name ${{ secrets.AWS_CODE_DEPLOY_GROUP }} \
            --file-exists-behavior OVERWRITE \
-           --s3-location bucket=${{ secrets.AWS_S3_BUCKET }},key=deployment-$BUILD_NUMBER.zip,bundleType=zip \
+           --s3-location bucket=${{ secrets.AWS_S3_BUCKET }},key=deployment-card-service.zip,bundleType=zip \

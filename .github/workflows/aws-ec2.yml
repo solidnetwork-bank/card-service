@@ -39,14 +39,13 @@ jobs:
 
       # Upload Artifact to s3
       - name: Upload Artifact to s3
-        working-directory: ./target
         run: |
           aws deploy push \
           --application-name ${{ secrets.AWS_CODE_DEPLOY_APP_NAME }} \
           --description "This is a revision for deployment-$BUILD_NUMBER" \
           --ignore-hidden-files \
           --s3-location s3://${{ secrets.AWS_S3_BUCKET }}/deployment-$BUILD_NUMBER.zip \
-          --source *.jar
+          --source .
 
   # Deploy to EC2
   deploy:

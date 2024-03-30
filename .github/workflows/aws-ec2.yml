@@ -29,6 +29,15 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
+      # Move files to build folder
+      - name: Move files to build folder
+        run: |
+          mkdir -p build 
+          cp target/*.jar build
+          cp .codedeploy/appspec.yml build
+          cp .codedeploy/scripts/*.sh build
+          ls -ln build
+
       # Configure AWS Credential
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -45,7 +54,7 @@ jobs:
           --description "This is a revision for deployment-${{ github.sha }}" \
           --ignore-hidden-files \
           --s3-location s3://${{ secrets.AWS_S3_BUCKET }}/deployment-${{ github.sha }}.zip \
-          --source .
+          --source build
 
         # Create deployment to CodeDeploy
       - name: AWS Create Deployment

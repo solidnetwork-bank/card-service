@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd /var/repo
+cd /opt/solidnetwork/bank/services/card-service
 sudo java -jar -Dserver.port=80 \
     *.jar > /dev/null 2> /dev/null < /dev/null &

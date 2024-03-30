@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-sudo rm -rf /var/repo
+cd /opt/solidnetwork/bank/services/card-service
+sudo rm -rf *.jar

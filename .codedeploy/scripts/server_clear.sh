@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-cd /opt/solidnetwork/bank/services/card-service
+cd /opt/solidnetwork/bank/services
 sudo rm -rf *.jar

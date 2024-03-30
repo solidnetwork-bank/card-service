@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: *.jar
-    destination: /opt/solidnetwork/bank/services/card-service
+    destination: /opt/solidnetwork/bank/services
 
 permissions:
   - object: /
@@ -14,7 +14,7 @@ permissions:
 hooks:
   BeforeInstall:
     - location: server_clear.sh
-      timeout: 300
+      timeout: 20
       runas: ec2-user
   ApplicationStop:
     - location: server_stop.sh

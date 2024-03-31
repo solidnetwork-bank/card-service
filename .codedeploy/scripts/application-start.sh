@@ -19,3 +19,6 @@
 #sudo wget https://github.com/solidnetwork-bank/card-service/blame/5b752f67097c33602cecc2d80b24192c4393a22e/target/service-0.0.2-SNAPSHOT.jar
 #sudo mv service-0.0.2-SNAPSHOT.jar card-service.jar
 #java - jar card-service.jar
+
+
+echo "The ApplicationStart deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log

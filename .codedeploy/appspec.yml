@@ -16,6 +16,10 @@ hooks:
     - location: server_clear.sh
       timeout: 20
       runas: ec2-user
+  AfterInstall:
+    - location: add_log_cloudwatch.sh
+      timeout: 20
+      runas: ec2-user
   ApplicationStop:
     - location: server_stop.sh
       timeout: 20

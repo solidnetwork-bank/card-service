@@ -12,4 +12,4 @@
 
 #pkill -f /var/appname.jar
 
-echo "The ApplicationStop deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log
+#echo "The ApplicationStop deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log

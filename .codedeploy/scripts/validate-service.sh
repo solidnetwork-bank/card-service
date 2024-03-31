@@ -12,4 +12,4 @@
  #   fi
 #done
 
-echo "The ValidateService deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log
+#echo "The ValidateService deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log

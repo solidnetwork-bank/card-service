@@ -10,4 +10,4 @@
 
 
 
-echo "The AfterInstall deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log
+#echo "The AfterInstall deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log

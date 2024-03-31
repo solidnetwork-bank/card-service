@@ -21,4 +21,4 @@
 #java - jar card-service.jar
 
 
-echo "The ApplicationStart deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log
+#echo "The ApplicationStart deployment lifecycle event successfully completed." > /opt/codedeploy-agent/logs/codedeploy-deployments.log

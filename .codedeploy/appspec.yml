@@ -4,6 +4,7 @@ os: linux
 files:
   - source: *.jar
     destination: /opt/solidnetwork/bank/services
+    overwrite: true
 
 permissions:
   - object: /
@@ -12,6 +13,10 @@ permissions:
     group: ec2-user
 
 hooks:
+  ApplicationStop:
+    - location: server_stop.sh
+      timeout: 20
+      runas: ec2-user
   BeforeInstall:
     - location: server_clear.sh
       timeout: 20
@@ -20,15 +25,11 @@ hooks:
     - location: add_log_cloudwatch.sh
       timeout: 20
       runas: ec2-user
-  ApplicationStop:
-    - location: server_stop.sh
-      timeout: 20
-      runas: ec2-user
   ApplicationStart:
     - location: server_start.sh
       timeout: 20
       runas: ec2-user
   ValidateService:
     - location: server_validate.sh
-      timeout: 60
+      timeout: 40
       runas: ec2-user

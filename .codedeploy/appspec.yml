@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: ./card-service-TEST.jar
+  - source: ./card-service.jar
     destination: /opt/solidnetwork/bank/services
 
 hooks:

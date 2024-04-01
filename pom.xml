@@ -14,6 +14,7 @@
 		<java.version>__JAVA_VERSION__</java.version>
 		<service.name>__SERVICE_NAME__</service.name>
 		<log.dir>__LOG_DIR__</log.dir>
+		<sonar.sources>src/main/java</sonar.sources>
 	</properties>
 	<groupId>xyz.solidnetwork</groupId>
 	<version>0.0.2-SNAPSHOT</version>

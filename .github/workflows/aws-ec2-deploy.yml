@@ -38,6 +38,10 @@ jobs:
           cp .codedeploy/scripts/*.sh build
           ls -ln build
 
+      # Make CodeDeploy scripts executable
+      - name: Make CodeDeploy scripts executable
+        run: chmod +x build/*.sh
+
       # Configure AWS Credential
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4

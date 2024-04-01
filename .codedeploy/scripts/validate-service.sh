@@ -1,20 +1,20 @@
 #!/bin/bash
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo " V A L I D A T E  S E R V I C E                        " >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__
+echo " V A L I D A T E  S E R V I C E                        " >> __DEPLOY_LOG__
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__
 
 while [ true ]
   do
-    if [ "$(curl -s http://localhost:80/actuator/health)" = '{"status":"UP"}' ]
+    if [ "$(curl -s http://localhost:__SERVICE_PORT__/actuator/health)" = '{"status":"UP"}' ]
      then
-       echo "/actuator/health STATUS=UP" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+       echo "/actuator/health STATUS=UP" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> __DEPLOY_LOG__
        exit 0
     else
-       echo "/actuator/health STATUS is not UP or it can't be consulted" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+       echo "/actuator/health STATUS is not UP or it can't be consulted" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> __DEPLOY_LOG__
        sleep 3s
     fi
 done
 
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo " VALIDATE SERVICE SUCCESS                              " >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__
+echo " VALIDATE SERVICE SUCCESS                              " >> __DEPLOY_LOG__
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__

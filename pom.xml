@@ -9,15 +9,17 @@
 		<version>3.2.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>xyz.solidnetwork</groupId>
-	<artifactId>card-service</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
-	<name>card-service</name>
-	<description>card-service</description>
-	<packaging>jar</packaging>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>__JAVA_VERSION__</java.version>
+		<service.name>__SERVICE_NAME__</service.name>
+		<log.dir>__LOG_DIR__</log.dir>
 	</properties>
+	<groupId>xyz.solidnetwork</groupId>
+	<artifactId>${service.name}</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<name>${service.name}</name>
+	<description>${service.name}</description>
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -41,7 +43,7 @@
 	</dependencies>
 
 	<build>
-	<finalName>card-service</finalName>
+	<finalName>${service.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

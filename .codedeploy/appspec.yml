@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: ./card-service.jar
-    destination: /opt/solidnetwork/bank/services
+  - source: ./__SERVICE_NAME__.jar
+    destination: __DEPLOY_DIR__
 
 hooks:
   BeforeInstall:

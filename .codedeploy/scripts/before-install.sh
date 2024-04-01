@@ -1,27 +1,27 @@
 #!/bin/bash
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo " B E F O R E  I N S T A L L                            " >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__
+echo " B E F O R E  I N S T A L L                            " >> __DEPLOY_LOG__
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__
 
 # terminate java process
-process=`ps -ef | grep -v awk | awk -e '/java.*card-service.jar/ { print $2 }'`
+process=`ps -ef | grep -v awk | awk -e '/java.*__SERVICE_NAME__.jar/ { print $2 }'`
 if [ -z "$process" ]
 then
-    echo "no process to terminate" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+    echo "no process to terminate" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> __DEPLOY_LOG__
 else
-      echo "terminating process ${process}" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-      sudo kill -TERM ${process} | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [kill] $_"' >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+      echo "terminating process ${process}" | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [echo] $_"' >> __DEPLOY_LOG__
+      sudo kill -TERM ${process} | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [kill] $_"' >> __DEPLOY_LOG__
 fi
 
 # remove jar file
-cd /opt/solidnetwork/bank/services
-pwd | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [pwd] $_"' >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-ls | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [ls] $_"' >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-if [ -f 'card-service.jar' ]
+cd __DEPLOY_DIR__
+pwd | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [pwd] $_"' >> __DEPLOY_LOG__
+ls | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [ls] $_"' >> __DEPLOY_LOG__
+if [ -f '__SERVICE_NAME__.jar' ]
 then
-    sudo rm -v -f card-service.jar | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [rm] $_"' | sudo tee -a /opt/codedeploy-agent/logs/codedeploy-deployments.log
+    sudo rm -v -f __SERVICE_NAME__.jar | perl -MPOSIX -ne 'BEGIN{ $|=1 } print strftime( "%Y-%m-%d %H:%M:%S", localtime ) . " [rm] $_"' | sudo tee -a __DEPLOY_LOG__
 fi
 
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo " BEFORE INSTALL SUCCESS                                " >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
-echo "-------------------------------------------------------" >> /opt/codedeploy-agent/logs/codedeploy-deployments.log
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__
+echo " BEFORE INSTALL SUCCESS                                " >> __DEPLOY_LOG__
+echo "-------------------------------------------------------" >> __DEPLOY_LOG__

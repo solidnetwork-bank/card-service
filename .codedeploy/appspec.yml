@@ -6,9 +6,6 @@ files:
     destination: /opt/solidnetwork/bank/services
 
 hooks:
-  ApplicationStop:
-    - location: ./application-stop.sh
-      timeout: 20
   BeforeInstall:
     - location: ./before-install.sh
       timeout: 20

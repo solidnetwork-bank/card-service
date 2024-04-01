@@ -56,11 +56,11 @@ jobs:
           regex: false
 
       # Setup Java AMZ to build maven
-      - name: Set up JDK 21
+      - name: Set up JDK 
         uses: actions/setup-java@v4
         with:
           distribution: "corretto"
-          java-version: "21"
+          java-version: "__JAVA_VERSION__"
           cache: maven
 
       # Package with Maven

@@ -9,12 +9,9 @@ hooks:
   BeforeInstall:
     - location: ./before-install.sh
       timeout: 20
-  AfterInstall:
-    - location: ./after-install.sh
-      timeout: 20
   ApplicationStart:
     - location: ./application-start.sh
-      timeout: 20
+      timeout: 40
   ValidateService:
     - location: ./validate-service.sh
       timeout: 40

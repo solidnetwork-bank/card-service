@@ -2,11 +2,6 @@ name: "aws-ec2-codedeploy"
 
 on:
   workflow_dispatch:
-    inputs:
-      region:
-        description: "AWS region"
-        required: true
-        default: "us-east-1"
 
 jobs:
   # Building the jar artifact to deploy
@@ -17,12 +12,16 @@ jobs:
       - name: Checkout code from selected branch
         uses: actions/checkout@v4
 
+      - name: Print repository name
+        run: |
+          echo ${{ github.event.repository.name }}
+
       # Find and replace variables
       - name: Parse project to fit CodeDeploy __SERVICE_NAME__
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "__SERVICE_NAME__"
-          replace: ${{ secrets.__SERVICE_NAME__ }}
+          replace: ${{ github.event.repository.name }}
           regex: false
           exclude: ".github/workflows/**" # Do not modify GitHub Actions files
       - name: Parse project to fit CodeDeploy __SERVICE_PORT__
@@ -45,6 +44,7 @@ jobs:
           find: "__DEPLOY_LOG__"
           replace: ${{ secrets.__DEPLOY_LOG__ }}
           regex: false
+          exclude: ".github/workflows/**" # Do not modify GitHub Actions files
       - name: Parse project to fit CodeDeploy __DEPLOY_DIR__
         uses: jacobtomlinson/gha-find-replace@v3
         with:
@@ -89,27 +89,27 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET }}
-          aws-region: ${{ github.event.inputs.region }}
+          aws-access-key-id: ${{ secrets.AWS_CD_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_CD_ACCESS_SECRET_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       # Upload Artifact to s3
       - name: Upload Artifact to s3
         run: |
           aws deploy push \
-          --application-name ${{ secrets.AWS_CODE_DEPLOY_APP_NAME }} \
+          --application-name ${{ secrets.AWS_CODE_DEPLOY_001_APP_NAME }} \
           --description "This is a push for deployment-${{ github.sha }}" \
           --ignore-hidden-files \
-          --s3-location s3://${{ secrets.AWS_S3_BUCKET }}/deployment-${{ github.sha }}.zip \
+          --s3-location s3://${{ secrets.AWS_S3_CODE_DEPLOY_BUCKET }}/deployment-${{ github.sha }}.zip \
           --source build
 
         # Create deployment to CodeDeploy
       - name: AWS Create Deployment
         run: |
           aws deploy create-deployment \
-           --application-name ${{ secrets.AWS_CODE_DEPLOY_APP_NAME }} \
+           --application-name ${{ secrets.AWS_CODE_DEPLOY_001_APP_NAME }} \
            --description "This is a deployment for deployment-${{ github.sha }}" \
            --deployment-config-name CodeDeployDefault.OneAtATime \
-           --deployment-group-name ${{ secrets.AWS_CODE_DEPLOY_GROUP }} \
+           --deployment-group-name ${{ secrets.AWS_CODE_DEPLOY_001_APP_001_GROUP_NAME }} \
            --file-exists-behavior OVERWRITE \
-           --s3-location bucket=${{ secrets.AWS_S3_BUCKET }},key=deployment-${{ github.sha }}.zip,bundleType=zip \
+           --s3-location bucket=${{ secrets.AWS_S3_CODE_DEPLOY_BUCKET }},key=deployment-${{ github.sha }}.zip,bundleType=zip \

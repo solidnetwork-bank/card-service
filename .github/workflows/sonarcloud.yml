@@ -17,7 +17,7 @@ jobs:
       - name: Print repository name
         run: |
           echo ${GITHUB_REPOSITORY#*/}
-          echo ::set-env name=TF_VAR_instance_label::${GITHUB_REPOSITORY#*/}
+          echo "this is ${GITHUB_REPOSITORY#*/}"
 
         # Find and replace variables
       - name: Parse project to fit CodeDeploy __SERVICE_NAME__

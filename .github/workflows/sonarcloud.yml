@@ -14,6 +14,11 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
+      - name: Print repository name
+        run: |
+          echo ${GITHUB_REPOSITORY#*/}
+          echo ::set-env name=TF_VAR_instance_label::${GITHUB_REPOSITORY#*/}
+
         # Find and replace variables
       - name: Parse project to fit CodeDeploy __SERVICE_NAME__
         uses: jacobtomlinson/gha-find-replace@v3

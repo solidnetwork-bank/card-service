@@ -16,14 +16,14 @@ jobs:
 
       - name: Print repository name
         run: |
-          echo {{ github.repository#*/ }}
+          echo ${{ github.repository#*/ }}
 
         # Find and replace variables
       - name: Parse project to fit CodeDeploy __SERVICE_NAME__
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "__SERVICE_NAME__"
-          replace: ${{GITHUB_REPOSITORY#*/}}
+          replace: ${{ github.repository#*/ }}
           regex: false
           exclude: ".github/workflows/**" # Do not modify GitHub Actions files
       - name: Parse project to fit CodeDeploy __SERVICE_PORT__
@@ -87,4 +87,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=solidnetwork-bank_${{GITHUB_REPOSITORY#*/}}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=solidnetwork-bank_${{ github.repository#*/ }}

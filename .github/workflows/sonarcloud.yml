@@ -16,7 +16,7 @@ jobs:
 
       - name: Print repository name
         run: |
-          echo ${{GITHUB_REPOSITORY#*/}}
+          echo {{ github.repository#*/ }}
 
         # Find and replace variables
       - name: Parse project to fit CodeDeploy __SERVICE_NAME__

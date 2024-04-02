@@ -18,6 +18,7 @@ jobs:
         run: |
           echo ${GITHUB_REPOSITORY#*/}
           echo "this is ${GITHUB_REPOSITORY#*/}"
+          echo ${GITHUB_REPOSITORY#*/} | sed 's/./& /g'
 
         # Find and replace variables
       - name: Parse project to fit CodeDeploy __SERVICE_NAME__

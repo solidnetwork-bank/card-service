@@ -1,16 +1,23 @@
-package xyz.solidnetwork.service;
+package xyz.solidnetwork.service.card;
 
 public class Card {
     private String number;
     private String expiration;
     private String holder;
     private String cvv;
+    private int lastDigits;
 
     public Card() {
         number = "1111 2222 3333 4444";
         expiration = "11/33";
         holder = "Mary Jane Doe";
         cvv = "555";
+        lastDigits = 4444;
+    }
+
+    public Card(String number, int lastDigits) {
+        this.number = number;
+        this.lastDigits = lastDigits;
     }
 
     public String getNumber() {
@@ -45,9 +52,18 @@ public class Card {
         this.cvv = cvv;
     }
 
+    public int getLastDigits() {
+        return lastDigits;
+    }
+
+    public void setLastDigits(int lastDigits) {
+        this.lastDigits = lastDigits;
+    }
+
     @Override
     public String toString() {
-        return "Card [number=" + number + ", expiration=" + expiration + ", holder=" + holder + ", cvv=" + cvv + "]";
+        return "Card [number=" + number + ", expiration=" + expiration + ", holder=" + holder + ", cvv=" + cvv
+                + ", lastDigits=" + lastDigits + "]";
     }
 
 }

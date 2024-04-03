@@ -1,5 +1,21 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-
-  "onCreateCommand": "git config --global user.name ${GITHUB_USER}"
+  "name": "Java",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installGradle": "false",
+      "installMaven": "true"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
 }

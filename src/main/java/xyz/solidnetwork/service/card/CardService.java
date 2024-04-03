@@ -3,7 +3,10 @@ package xyz.solidnetwork.service.card;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardFetch {
+import org.springframework.stereotype.Service;
+
+@Service
+public class CardService {
 
     public List<Card> listAllCards() {
         List<Card> cards = new ArrayList<>();

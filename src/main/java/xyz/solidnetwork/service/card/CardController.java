@@ -13,12 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 public class CardController {
 
 	@Autowired
-	private CardFetch cardFetch;
+	private CardService cardService;
 
 	@PostMapping("/")
 	public List<Card> listAllCards() {
 		log.info("lislAllCards is requested");
-		return cardFetch.listAllCards();
+		return cardService.listAllCards();
 	}
 
 	@PostMapping("/detail")

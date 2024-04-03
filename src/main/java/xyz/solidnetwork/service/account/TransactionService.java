@@ -4,10 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionFetch {
+import org.springframework.stereotype.Service;
+
+@Service
+public class TransactionService {
     private Statement statement;
 
-    public TransactionFetch() {
+    public TransactionService() {
         statement = new Statement("5544 3322 1100", getDeposits(), getWithdrawals(), getFees());
     }
 

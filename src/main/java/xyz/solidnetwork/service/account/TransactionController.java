@@ -10,11 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TransactionController {
     @Autowired
-    private TransactionFetch transactionFetch;
+    private TransactionService transactionService;
 
     @PostMapping("/transaction")
     public Statement getTransaction() {
         log.info("transaction is requested");
-        return transactionFetch.getStatement();
+        return transactionService.getStatement();
     }
 }

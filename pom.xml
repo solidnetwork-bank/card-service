@@ -9,15 +9,16 @@
 		<version>3.2.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<artifactId>__SERVICE_NAME__</artifactId>
+	<artifactId>card-service</artifactId>
 	<properties>
-		<java.version>__JAVA_VERSION__</java.version>
-		<service.name>__SERVICE_NAME__</service.name>
-		<log.dir>__LOG_DIR__</log.dir>
+		<java.version>21</java.version>
+		<service.name>card-service</service.name>
+		<service.port>5000</service.port>
+		<log.dir>logs.log</log.dir>
 		<sonar.sources>src/main/java</sonar.sources>
 		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 		<sonar.organization>solidnetwork-bank</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<groupId>xyz.solidnetwork</groupId>
 	<version>0.0.2-SNAPSHOT</version>
@@ -47,13 +48,13 @@
 	</dependencies>
 
 	<build>
-	<finalName>${service.name}</finalName>
+		<finalName>${service.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			 <!-- Sonarqube & coverage -->
+			<!-- Sonarqube & coverage -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

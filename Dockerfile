@@ -2,14 +2,12 @@ FROM amazoncorretto:21
 
 WORKDIR /workspace/app
 
-COPY .mvn .
+COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-RUN ./.mvn/mvnw install -DskipTests
-
-COPY target/*.jar app.jar
+RUN ./.mvn/mvnw -B package --file pom.xml -DskipTests
 
 EXPOSE 5000
 
-ENTRYPOINT ["sh", "-c", "java -jar /app.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar target/card-service.jar"]

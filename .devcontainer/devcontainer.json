@@ -1,19 +1,10 @@
 {
-  "name": "Java",
-  "image": "mcr.microsoft.com/devcontainers/java:21",
-  "features": {
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "none",
-      "installGradle": "false",
-      "installMaven": "true"
-    }
-  },
+  "name": "Universal",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
   "customizations": {
     "vscode": {
       "extensions": [
-        "vscjava.vscode-java-pack",
         "VisualStudioExptTeam.vscodeintellicode",
-        "VisualStudioExptTeam.intellicode-api-usage-examples",
         "redhat.vscode-yaml"
       ]
     }

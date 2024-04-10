@@ -21,7 +21,7 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<groupId>xyz.solidnetwork</groupId>
-	<version>0.3</version>
+	<version>0.4</version>
 	<name>${service.name}</name>
 	<description>${service.name}</description>
 	<packaging>jar</packaging>

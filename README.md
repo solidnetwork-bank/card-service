@@ -2,7 +2,7 @@
 
 # run
 ````
-docker run --rm -it -p 5000:5000 solidnetworkxyz/card-service:0.4
+docker run --rm -it -p 5000:5000 solidnetworkxyz/card-service:0.5
 ````
 
 # Generate Jar before build
@@ -12,12 +12,12 @@ docker run --rm -it -p 5000:5000 solidnetworkxyz/card-service:0.4
 
 # build
 ````
-docker build -t "solidnetworkxyz/card-service:0.4" .
+docker build -t "solidnetworkxyz/card-service:0.5" .
 ````
 
 # push
 ````
-docker push solidnetworkxyz/card-service:0.4
+docker push solidnetworkxyz/card-service:0.5
 ````
 
 # REMEMBER CHANGE VERSION

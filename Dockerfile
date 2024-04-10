@@ -1,4 +1,4 @@
-FROM amazoncorretto:21
+FROM amazoncorretto:21-alpine3.16
 
 WORKDIR /workspace/app
 

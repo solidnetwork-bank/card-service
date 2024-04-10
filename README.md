@@ -1,8 +1,18 @@
-# 
-./.mvn/mvnw clean package
+# card-service
 
-java -jar target/service.jar
+# run
+````
+docker run --rm -it -p 5000:80 solidnetworkxyz/card-service:0.3
+````
 
-- **avoid update pom.xml**
-- **rewrite __VARS__ locally before run**
-- **Those __VARS__ are in GitHub repo secrets**
+# build
+````
+docker build -t "solidnetworkxyz/card-service:0.3" .
+````
+
+# push
+````
+docker push solidnetworkxyz/card-service:0.3
+````
+
+# REMEMBER CHANGE VERSION

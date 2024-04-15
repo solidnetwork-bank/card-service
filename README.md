@@ -1,9 +1,5 @@
 # card-service
 
-# run
-````
-docker run --rm -it -p 5000:5000 solidnetworkxyz/card-service:0.5
-````
 
 # Generate Jar before build
 ````
@@ -12,13 +8,23 @@ docker run --rm -it -p 5000:5000 solidnetworkxyz/card-service:0.5
 
 # build
 ````
-docker build -t "solidnetworkxyz/card-service:0.5" .
+docker build -t "solidnetworkxyz/card-service:0.6" .
+````
+
+# run
+````
+docker run --rm -it -p 80:80 solidnetworkxyz/card-service:0.6
+````
+# login
+````
+docker login -u my-user
 ````
 
 # push
 ````
-docker push solidnetworkxyz/card-service:0.5
+docker push solidnetworkxyz/card-service:0.6
 ````
 
 # REMEMBER CHANGE VERSION
-
+- pom.xml
+- docker build -t

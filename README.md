@@ -8,21 +8,21 @@
 
 # build
 ````
-docker build -t "solidnetworkxyz/card-service:0.6" .
+docker build -t "solidnetworkxyz/card-service:0.7" .
 ````
 
 # run
 ````
-docker run --rm -it -p 80:80 solidnetworkxyz/card-service:0.6
+docker run --rm -it -p 80:80 solidnetworkxyz/card-service:0.7
 ````
 # login
 ````
-docker login -u my-user
+docker login -u solidnetworkxyz
 ````
 
 # push
 ````
-docker push solidnetworkxyz/card-service:0.6
+docker push solidnetworkxyz/card-service:0.7
 ````
 
 # REMEMBER CHANGE VERSION

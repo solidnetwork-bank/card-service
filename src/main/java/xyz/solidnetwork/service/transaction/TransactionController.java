@@ -1,4 +1,4 @@
-package xyz.solidnetwork.service.account;
+package xyz.solidnetwork.service.transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +12,9 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @PostMapping("/transaction")
-    public Statement getTransaction() {
-        log.info("transaction is requested");
-        return transactionService.getStatement();
+    @PostMapping("/private/transaction")
+    public Report getTransaction() {
+        log.info("PRIVATE transaction is requested");
+        return transactionService.getreport();
     }
 }

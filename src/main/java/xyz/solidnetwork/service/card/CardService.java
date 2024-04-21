@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class CardService {
 
-    public MessageWrapper listAllCards() {
-        MessageWrapper message = new MessageWrapper();
+    public CardWrapper listAllCards() {
+        CardWrapper message = new CardWrapper();
 
         List<Card> cards = new ArrayList<>();
         cards.add(new Card("11", 1122));

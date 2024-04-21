@@ -2,7 +2,7 @@ package xyz.solidnetwork.service.card;
 
 import java.util.List;
 
-public class MessageWrapper {
+public class CardWrapper {
     private List<Card> cards;
 
     public List<Card> getCards() {

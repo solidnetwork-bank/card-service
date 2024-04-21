@@ -14,7 +14,7 @@ public class CardController {
 	private CardService cardService;
 
 	@PostMapping("/")
-	public MessageWrapper listAllCards() {
+	public CardWrapper listAllCards() {
 		log.info("lislAllCards is requested");
 		return cardService.listAllCards();
 	}

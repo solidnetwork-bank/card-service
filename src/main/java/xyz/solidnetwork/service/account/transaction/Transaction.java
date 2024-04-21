@@ -1,4 +1,4 @@
-package xyz.solidnetwork.service.account;
+package xyz.solidnetwork.service.account.transaction;
 
 import java.time.LocalDate;
 

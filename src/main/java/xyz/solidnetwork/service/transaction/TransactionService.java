@@ -1,4 +1,4 @@
-package xyz.solidnetwork.service.account;
+package xyz.solidnetwork.service.transaction;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,18 +8,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TransactionService {
-    private Statement statement;
+    private Report report;
 
     public TransactionService() {
-        statement = new Statement("5544 3322 1100", getDeposits(), getWithdrawals(), getFees());
+        report = new Report("5544 3322 1100", getDeposits(), getWithdrawals(), getFees());
     }
 
-    public Statement getStatement() {
-        return statement;
+    public Report getreport() {
+        return report;
     }
 
-    public void setStatement(Statement statement) {
-        this.statement = statement;
+    public void setreport(Report report) {
+        this.report = report;
     }
 
     private List<Transaction> getDeposits() {

@@ -1,14 +1,14 @@
-package xyz.solidnetwork.service.account;
+package xyz.solidnetwork.service.transaction;
 
 import java.util.List;
 
-public class Statement {
+public class Report {
     private String account;
     private List<Transaction> deposits;
     private List<Transaction> withdrawals;
     private List<Transaction> fees;
 
-    public Statement(String account, List<Transaction> deposits, List<Transaction> withdrawals,
+    public Report(String account, List<Transaction> deposits, List<Transaction> withdrawals,
             List<Transaction> fees) {
         this.account = account;
         this.deposits = deposits;

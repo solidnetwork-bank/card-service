@@ -1,5 +1,9 @@
 # card-service
 
+# REMEMBER UPDATE VERSION
+- pom.xml
+- README
+
 
 # Generate Jar before build
 ````
@@ -25,6 +29,3 @@ docker login -u solidnetworkxyz
 docker push solidnetworkxyz/card-service:0.8
 ````
 
-# REMEMBER CHANGE VERSION
-- pom.xml
-- docker build -t

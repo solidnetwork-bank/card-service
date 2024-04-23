@@ -16,10 +16,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Slf4j
 public class FilterConfig implements Filter {
 
   @Value("${log.time.zone}")
@@ -40,14 +38,10 @@ public class FilterConfig implements Filter {
       MDC.put(USER_ID, userId);
       MDC.put(REQUEST_ID, requestId);
 
-      log.info("*** Intercept coming request and set MDC context information ***");
-
-      log.info("Received {}:{}, {}:{}", USER_ID, userId, REQUEST_ID, requestId);
-
       filterChain.doFilter(servletRequest, servletResponse);
     } finally {
       MDC.clear();
-      log.info("*** Intercept coming request and MDC context information is clear ***");
+
     }
 
   }

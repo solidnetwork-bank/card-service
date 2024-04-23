@@ -21,9 +21,10 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<log.time.zone>America/New_York</log.time.zone>
 		<log.date.pat>ISO8601</log.date.pat>
+		<service.profile>dev</service.profile>
 	</properties>
 	<groupId>xyz.solidnetwork</groupId>
-	<version>0.9</version>
+	<version>1.0</version>
 	<name>${service.name}</name>
 	<description>${service.name}</description>
 	<packaging>jar</packaging>

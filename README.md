@@ -3,6 +3,8 @@
 # REMEMBER UPDATE VERSION
 - pom.xml
 - README
+- commit
+- tag
 
 
 # Generate Jar before build
@@ -12,12 +14,12 @@
 
 # build
 ````
-docker build -t "solidnetworkxyz/card-service:0.8" .
+docker build -t "solidnetworkxyz/card-service:0.9" .
 ````
 
 # run
 ````
-docker run --rm -it -p 80:80 solidnetworkxyz/card-service:0.8
+docker run --rm -it -p 80:80 solidnetworkxyz/card-service:0.9
 ````
 # login
 ````
@@ -26,6 +28,6 @@ docker login -u solidnetworkxyz
 
 # push
 ````
-docker push solidnetworkxyz/card-service:0.8
+docker push solidnetworkxyz/card-service:0.9
 ````
 

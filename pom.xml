@@ -24,7 +24,7 @@
 		<service.profile>dev</service.profile>
 	</properties>
 	<groupId>xyz.solidnetwork</groupId>
-	<version>1.1</version>
+	<version>1.2</version>
 	<name>${service.name}</name>
 	<description>${service.name}</description>
 	<packaging>jar</packaging>

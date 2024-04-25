@@ -1,11 +1,6 @@
 package xyz.solidnetwork.service;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Random;
-import java.util.TimeZone;
-import java.util.UUID;
 
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +11,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Component
 public class FilterConfig implements Filter {
@@ -23,20 +19,17 @@ public class FilterConfig implements Filter {
   @Value("${log.time.zone}")
   private String logTimeZone;
 
-  private static final String USER_ID = "user-id";
-  private static final String REQUEST_ID = "request-id";
-
   @Override
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
       throws IOException, ServletException {
 
     try {
 
-      final String userId = getFromJWT();
-      final String requestId = getFromRequestFromLambda();
+      final String userId = getHeader(Const.USER_ID_HEADER, servletRequest);
+      final String requestId = getHeader(Const.REQUEST_ID_HEADER, servletRequest);
 
-      MDC.put(USER_ID, userId);
-      MDC.put(REQUEST_ID, requestId);
+      MDC.put(Const.USER_ID, userId);
+      MDC.put(Const.REQUEST_ID, requestId);
 
       filterChain.doFilter(servletRequest, servletResponse);
     } finally {
@@ -46,34 +39,11 @@ public class FilterConfig implements Filter {
 
   }
 
-  private String getFromJWT() {
+  private String getHeader(String headerName, ServletRequest servletRequest) {
 
-    int min = 6;
-    int max = 32;
-    Random rand = new Random();
+    HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
 
-    int top = rand.nextInt((max - min) + 1) + min;
-
-    return UUID.randomUUID().toString().replaceAll("-", "").substring(0, top - 1);
-
-  }
-
-  private String getFromRequestFromLambda() {
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
-    LocalDateTime dateTime = LocalDateTime.now(TimeZone.getTimeZone((logTimeZone)).toZoneId());
-    String time = dateTime.format(formatter);
-
-    StringBuffer stringBuffer = new StringBuffer();
-
-    stringBuffer.append("REQ");
-    stringBuffer.append("-");
-
-    stringBuffer.append(UUID.randomUUID().toString().replaceAll("-", ""));
-    stringBuffer.append("-");
-    stringBuffer.append(time);
-
-    return stringBuffer.toString();
+    return httpRequest.getHeader(headerName);
 
   }
 

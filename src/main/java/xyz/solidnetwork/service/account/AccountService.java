@@ -1,5 +1,6 @@
 package xyz.solidnetwork.service.account;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
@@ -10,13 +11,15 @@ import xyz.solidnetwork.service.account.transaction.Report;
 @Service
 @Slf4j
 public class AccountService {
-    // @Autowired
-    RestTemplate restTemplate = new RestTemplate();
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     public Report getReport() {
         restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory("http://localhost:80"));
+
         log.info("microservice transaction-service is invoked");
-        return restTemplate.postForObject("/private/transaction", "my-request", Report.class);
+        return restTemplate.postForObject("/private/transaction", "body-request", Report.class);
 
     }
 

@@ -18,8 +18,8 @@ public class HeaderHttpRequestInterceptor implements ClientHttpRequestIntercepto
       @NonNull ClientHttpRequestExecution execution) throws IOException {
     HttpHeaders headers = request.getHeaders();
     headers.setContentType(MediaType.APPLICATION_JSON);
-    headers.set(Const.USER_ID_HEADER, MDC.get(Const.USER_ID));
-    headers.set(Const.REQUEST_ID_HEADER, MDC.get(Const.REQUEST_ID));
+    headers.set(Const.USER_ID, MDC.get(Const.USER_ID));
+    headers.set(Const.TRACE_ID, MDC.get(Const.TRACE_ID));
 
     return execution.execute(request, body);
 

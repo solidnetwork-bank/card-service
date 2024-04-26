@@ -25,11 +25,11 @@ public class FilterConfig implements Filter {
 
     try {
 
-      final String userId = getHeader(Const.USER_ID_HEADER, servletRequest);
-      final String requestId = getHeader(Const.REQUEST_ID_HEADER, servletRequest);
+      final String userId = getHeader(Const.USER_ID, servletRequest);
+      final String traceId = getHeader(Const.TRACE_ID, servletRequest);
 
       MDC.put(Const.USER_ID, userId);
-      MDC.put(Const.REQUEST_ID, requestId);
+      MDC.put(Const.TRACE_ID, traceId);
 
       filterChain.doFilter(servletRequest, servletResponse);
     } finally {

@@ -14,12 +14,12 @@
 
 # build
 ````
-docker build -t "solidnetworkxyz/card-service:1.4" .
+docker build -t "solidnetworkxyz/card-service:1.5" .
 ````
 
 # run
 ````
-docker run --rm -it -p 80:80 solidnetworkxyz/card-service:1.4
+docker run --rm -it -p 80:80 solidnetworkxyz/card-service:1.5
 ````
 # login
 ````
@@ -28,6 +28,6 @@ docker login -u solidnetworkxyz
 
 # push
 ````
-docker push solidnetworkxyz/card-service:1.4
+docker push solidnetworkxyz/card-service:1.5
 ````
 
